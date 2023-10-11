@@ -102,7 +102,7 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://mongodb:27017", {
+mongoose.connect("mongodb://172.25.208.1:27017", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
