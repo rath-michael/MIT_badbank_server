@@ -115,7 +115,7 @@ db.once("open", () => {
 
 // Define API endpoints
 // Get user by email
-app.get("https://mitbadbankserver-production.up.railway.app/user/find/:email", async (req, res) => {
+app.get("/user/find/:email", async (req, res) => {
     try {
         const user = await dbContext.getUser(req.params.email);
         console.log("getUser success: " + JSON.stringify(user));
@@ -127,7 +127,7 @@ app.get("https://mitbadbankserver-production.up.railway.app/user/find/:email", a
 });
 
 // Get all users
-app.get("https://mitbadbankserver-production.up.railway.app/user/all", async (req, res) => {
+app.get("/user/all", async (req, res) => {
     try {
         const users = await dbContext.getAllUsers();
         res.status(200).json(users);
@@ -138,7 +138,7 @@ app.get("https://mitbadbankserver-production.up.railway.app/user/all", async (re
 });
 
 // Get user count
-app.get("https://mitbadbankserver-production.up.railway.app/user/count", async (req, res) => {
+app.get("/user/count", async (req, res) => {
     try {
         const count = await dbContext.getUserCount();
         res.status(200).json(count);
@@ -149,7 +149,7 @@ app.get("https://mitbadbankserver-production.up.railway.app/user/count", async (
 });
 
 // Add user
-app.post("https://mitbadbankserver-production.up.railway.app/user/add", async (req, res) => {
+app.post("/user/add", async (req, res) => {
     try {
         const user = await dbContext.addUser(req.body);
         console.log("User add success");
@@ -161,7 +161,7 @@ app.post("https://mitbadbankserver-production.up.railway.app/user/add", async (r
 });
 
 // Update user info
-app.put("https://mitbadbankserver-production.up.railway.app/user/update/:email", async (req, res) => {
+app.put("/user/update/:email", async (req, res) => {
     const email = req.params.email;
     const updates = req.body;
     try {
@@ -175,7 +175,7 @@ app.put("https://mitbadbankserver-production.up.railway.app/user/update/:email",
 });
 
 // Get all transactions
-app.get("https://mitbadbankserver-production.up.railway.app/transaction/all", async (req, res) => {
+app.get("/transaction/all", async (req, res) => {
     try {
         const transactions = await dbContext.getAllTransactions();
         res.status(200).json(transactions);
@@ -186,7 +186,7 @@ app.get("https://mitbadbankserver-production.up.railway.app/transaction/all", as
 });
 
 // Add new transaction
-app.post("https://mitbadbankserver-production.up.railway.app/transaction/add", async (req, res) => {
+app.post("/transaction/add", async (req, res) => {
     try {
         const transaction = await dbContext.addTransaction(req.body);
         res.status(200).json(transaction);
