@@ -102,7 +102,12 @@ app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://172.17.0.2:27017", {
+//mongoose.connect("mongodb://172.17.0.2:27017", {
+    //useNewUrlParser: true,
+    //useUnifiedTopology: true,
+//});
+
+mongoose.connect("mongodb://mongo:r1F0h7DP61XemamxZJ3N@containers-us-west-175.railway.app:6443", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
