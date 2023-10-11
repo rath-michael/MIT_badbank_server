@@ -98,14 +98,8 @@ var dbContext = require("./dbcontext");
 
 const app = express();
 app.use(express.static("public"));
-//app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 app.use(express.json());
-
-//mongoose.connect("mongodb://172.17.0.2:27017", {
-    //useNewUrlParser: true,
-    //useUnifiedTopology: true,
-//});
 
 mongoose.connect("mongodb://mongo:r1F0h7DP61XemamxZJ3N@containers-us-west-175.railway.app:6443", {
     useNewUrlParser: true,
@@ -121,7 +115,7 @@ db.once("open", () => {
 
 // Define API endpoints
 // Get user by email
-app.get("/user/find/:email", async (req, res) => {
+app.get("https://mitbadbankserver-production.up.railway.app/user/find/:email", async (req, res) => {
     try {
         const user = await dbContext.getUser(req.params.email);
         console.log("getUser success: " + JSON.stringify(user));
@@ -133,7 +127,7 @@ app.get("/user/find/:email", async (req, res) => {
 });
 
 // Get all users
-app.get("/user/all", async (req, res) => {
+app.get("https://mitbadbankserver-production.up.railway.app/user/all", async (req, res) => {
     try {
         const users = await dbContext.getAllUsers();
         res.status(200).json(users);
@@ -144,7 +138,7 @@ app.get("/user/all", async (req, res) => {
 });
 
 // Get user count
-app.get("/user/count", async (req, res) => {
+app.get("https://mitbadbankserver-production.up.railway.app/user/count", async (req, res) => {
     try {
         const count = await dbContext.getUserCount();
         res.status(200).json(count);
@@ -155,7 +149,7 @@ app.get("/user/count", async (req, res) => {
 });
 
 // Add user
-app.post("/user/add", async (req, res) => {
+app.post("https://mitbadbankserver-production.up.railway.app/user/add", async (req, res) => {
     try {
         const user = await dbContext.addUser(req.body);
         console.log("User add success");
@@ -167,7 +161,7 @@ app.post("/user/add", async (req, res) => {
 });
 
 // Update user info
-app.put("/user/update/:email", async (req, res) => {
+app.put("https://mitbadbankserver-production.up.railway.app/user/update/:email", async (req, res) => {
     const email = req.params.email;
     const updates = req.body;
     try {
@@ -181,7 +175,7 @@ app.put("/user/update/:email", async (req, res) => {
 });
 
 // Get all transactions
-app.get("/transaction/all", async (req, res) => {
+app.get("https://mitbadbankserver-production.up.railway.app/transaction/all", async (req, res) => {
     try {
         const transactions = await dbContext.getAllTransactions();
         res.status(200).json(transactions);
@@ -192,7 +186,7 @@ app.get("/transaction/all", async (req, res) => {
 });
 
 // Add new transaction
-app.post("/transaction/add", async (req, res) => {
+app.post("https://mitbadbankserver-production.up.railway.app/transaction/add", async (req, res) => {
     try {
         const transaction = await dbContext.addTransaction(req.body);
         res.status(200).json(transaction);
