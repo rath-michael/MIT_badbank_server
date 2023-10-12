@@ -20,6 +20,13 @@ db.once("open", () => {
     console.log("Connected to MongoDB");
 });
 
+app.use(
+  cors({
+    origin: 'https://michael-rath-badbankcapstone.up.railway.app/',
+    methods: 'GET,POST,PUT,DELETE',
+  })
+);
+
 // Define API endpoints
 // Get user by email
 app.get("/user/find/:email", async (req, res) => {
