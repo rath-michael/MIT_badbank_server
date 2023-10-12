@@ -5,8 +5,13 @@ var dbContext = require("./dbcontext");
 
 const app = express();
 app.use(express.static("public"));
-app.use(cors());
 app.use(express.json());
+app.use(
+  cors({
+    origin: 'https://michael-rath-badbankcapstone.up.railway.app/',
+    methods: 'GET,POST,PUT,DELETE',
+  })
+);
 
 mongoose.connect("mongodb://mongo:r1F0h7DP61XemamxZJ3N@containers-us-west-175.railway.app:6443", {
     useNewUrlParser: true,
@@ -19,13 +24,6 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 db.once("open", () => {
     console.log("Connected to MongoDB");
 });
-
-app.use(
-  cors({
-    origin: 'https://michael-rath-badbankcapstone.up.railway.app/',
-    methods: 'GET,POST,PUT,DELETE',
-  })
-);
 
 // Define API endpoints
 // Get user by email
