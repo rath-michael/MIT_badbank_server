@@ -6,12 +6,7 @@ var dbContext = require("./dbcontext");
 const app = express();
 app.use(express.static("public"));
 app.use(express.json());
-app.use(
-  cors({
-    origin: 'https://michael-rath-badbankcapstone.up.railway.app/',
-    methods: 'GET,POST,PUT,DELETE',
-  })
-);
+app.use(cors());
 
 mongoose.connect("mongodb://mongo:r1F0h7DP61XemamxZJ3N@containers-us-west-175.railway.app:6443", {
     useNewUrlParser: true,
